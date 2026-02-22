@@ -1,0 +1,42 @@
+version: 2
+
+builds:
+  - main: .
+    binary: dotlock
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w -X github.com/mrprincerawat/dotlock/cmd.version={{.Version}}
+
+archives:
+  - format: tar.gz
+    name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
+    format_overrides:
+      - goos: windows
+        format: zip
+
+brews:
+  - repository:
+      owner: mrprincerawat
+      name: homebrew-tap
+    homepage: https://github.com/mrprincerawat/dotlock
+    description: Encrypt and manage .env files with a passphrase
+    license: MIT
+
+checksum:
+  name_template: checksums.txt
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+      - "^chore:"
