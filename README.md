@@ -2,7 +2,7 @@
 
 Encrypt your `.env` files. Commit them safely. Share with your team.
 
-<!-- ![demo](./demo.gif) -->
+![demo](./demo.gif)
 
 **dotlock** encrypts `.env` files into a single `.dotlock` vault file using a shared passphrase. Fully offline!
 
